@@ -1,0 +1,11 @@
+<section class="product-detail section-width">
+  <div class="product-detail-media">{% if product.featured_image %}<img src="{{ product.featured_image | image_url: width: 1400 }}" alt="{{ product.featured_image.alt | default: product.title | escape }}">{% endif %}</div>
+  <div class="product-detail-info"><p class="script">A Cart2Mart pick</p><h1>{{ product.title | escape }}</h1><div class="product-price large-price">{{ product.price | money }}</div>{% if product.description != blank %}<div class="product-description">{{ product.description }}</div>{% endif %}
+    {% form 'product', product %}
+      {% unless product.has_only_default_variant %}<label for="variant-select">Choose an option</label><select id="variant-select" name="id">{% for variant in product.variants %}<option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>{{ variant.title }} — {{ variant.price | money }}</option>{% endfor %}</select>{% else %}<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">{% endunless %}
+      <label for="quantity">Quantity</label><input id="quantity" type="number" name="quantity" value="1" min="1">
+      <button class="button button-gold add-cart" type="submit" {% unless product.available %}disabled{% endunless %}>{% if product.available %}Add to cart{% else %}Sold out{% endif %}</button>
+    {% endform %}
+  </div>
+</section>
+{% schema %}{"name":"Main product","settings":[]}{% endschema %}

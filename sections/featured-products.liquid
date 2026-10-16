@@ -1,0 +1,24 @@
+<section class="featured section-width">
+  <div class="section-heading"><div><h2>{{ section.settings.title | escape }}</h2><p>{{ section.settings.subtitle | escape }}</p></div><a href="{{ section.settings.collection.url | default: routes.all_products_collection_url }}">View All Products <span>→</span></a></div>
+  {% assign selected_collection = section.settings.collection %}
+  <div class="product-grid">
+    {% if selected_collection != blank and selected_collection.products.size > 0 %}
+      {% for product in selected_collection.products limit: section.settings.products_to_show %}
+        <article class="product-card">
+          <a class="product-image" href="{{ product.url }}">
+            {% if product.featured_image %}<img src="{{ product.featured_image | image_url: width: 700 }}" alt="{{ product.featured_image.alt | default: product.title | escape }}" loading="lazy">{% else %}<div class="image-empty">Product image</div>{% endif %}
+            {% if product.compare_at_price > product.price %}<span class="product-badge">Sale</span>{% elsif forloop.first %}<span class="product-badge">Featured</span>{% endif %}
+          </a>
+          <div class="product-info"><a class="product-title" href="{{ product.url }}">{{ product.title | escape }}</a><div class="product-price">{% if product.compare_at_price > product.price %}<s>{{ product.compare_at_price | money }}</s>{% endif %} {{ product.price | money }}</div></div>
+        </article>
+      {% endfor %}
+    {% else %}
+      {% for i in (1..5) %}
+        <article class="product-card demo-card"><div class="demo-product-art">{{ i }}</div><div class="product-info"><strong>Add products to your store</strong><p>Featured product preview</p></div></article>
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>
+{% schema %}
+{"name":"Featured products","settings":[{"type":"text","id":"title","label":"Heading","default":"Featured Products"},{"type":"text","id":"subtitle","label":"Subheading","default":"Handpicked for You"},{"type":"collection","id":"collection","label":"Collection"},{"type":"range","id":"products_to_show","label":"Products to show","min":4,"max":8,"step":1,"default":5}],"presets":[{"name":"Featured products"}]}
+{% endschema %}

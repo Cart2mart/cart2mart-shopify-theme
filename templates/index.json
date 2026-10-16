@@ -1,0 +1,97 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Welcome to",
+        "headline": "Cart2Mart",
+        "tagline": "Best Products  |  Better Price  |  Trusted Always",
+        "description": "Quality products, great prices and a hassle-free shopping experience — only at Cart2Mart.",
+        "button_label": "Shop Now",
+        "button_link": "/collections/all",
+        "hero_image": ""
+      }
+    },
+    "categories": {
+      "type": "categories",
+      "blocks": {
+        "c1": {
+          "type": "category",
+          "settings": {
+            "title": "Electronics",
+            "image": "",
+            "link": "/collections/electronics"
+          }
+        },
+        "c2": {
+          "type": "category",
+          "settings": {
+            "title": "Fashion",
+            "image": "",
+            "link": "/collections/fashion"
+          }
+        },
+        "c3": {
+          "type": "category",
+          "settings": {
+            "title": "Home & Living",
+            "image": "",
+            "link": "/collections/home-living"
+          }
+        },
+        "c4": {
+          "type": "category",
+          "settings": {
+            "title": "Beauty & Personal Care",
+            "image": "",
+            "link": "/collections/beauty"
+          }
+        },
+        "c5": {
+          "type": "category",
+          "settings": {
+            "title": "Sports & Outdoors",
+            "image": "",
+            "link": "/collections/sports"
+          }
+        },
+        "c6": {
+          "type": "category",
+          "settings": {
+            "title": "Accessories",
+            "image": "",
+            "link": "/collections/accessories"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
+      "settings": {}
+    },
+    "benefits": {
+      "type": "benefits",
+      "settings": {}
+    },
+    "featured": {
+      "type": "featured-products",
+      "settings": {
+        "title": "Featured Products",
+        "subtitle": "Handpicked for You",
+        "collection": "all",
+        "products_to_show": 5
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "categories",
+    "benefits",
+    "featured"
+  ]
+}

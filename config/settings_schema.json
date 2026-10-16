@@ -1,0 +1,39 @@
+[
+  {
+    "name": "Theme information",
+    "theme_name": "Cart2Mart Premium",
+    "theme_author": "OpenAI",
+    "theme_version": "1.0.0",
+    "theme_documentation_url": "https://help.shopify.com/",
+    "theme_support_url": "https://help.shopify.com/"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_gold",
+        "label": "Gold accent",
+        "default": "#ffbd18"
+      },
+      {
+        "type": "color",
+        "id": "color_ink",
+        "label": "Dark background",
+        "default": "#101518"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#17191b"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "Surface",
+        "default": "#f6f7f8"
+      }
+    ]
+  }
+]

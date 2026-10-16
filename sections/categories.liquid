@@ -1,0 +1,12 @@
+<section class="categories section-width">
+  {% for block in section.blocks %}
+    <a class="category-card" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+      {% if block.settings.image != blank %}<img src="{{ block.settings.image | image_url: width: 360 }}" alt="{{ block.settings.title | escape }}" loading="lazy">
+      {% else %}<div class="category-placeholder" aria-hidden="true">{{ block.settings.title | slice: 0 }}</div>{% endif %}
+      <span>{{ block.settings.title | escape }}</span>
+    </a>
+  {% endfor %}
+</section>
+{% schema %}
+{"name":"Shop categories","max_blocks":8,"blocks":[{"type":"category","name":"Category","settings":[{"type":"text","id":"title","label":"Title","default":"Category"},{"type":"image_picker","id":"image","label":"Image"},{"type":"url","id":"link","label":"Link"}]}],"presets":[{"name":"Shop categories","blocks":[{"type":"category"},{"type":"category"},{"type":"category"},{"type":"category"},{"type":"category"},{"type":"category"}]}]}
+{% endschema %}

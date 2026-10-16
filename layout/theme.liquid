@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <title>{{ page_title }}{% if current_tags %} – {{ current_tags | join: ', ' }}{% endif %}{% unless page_title contains shop.name %} – {{ shop.name }}{% endunless %}</title>
+  {% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+  {{ content_for_header }}
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+</head>
+<body>
+  <div class="announcement">
+    <span>🚚 Free Shipping on Orders Over $50</span><span>★ Trusted Shopping Experience</span><span>☏ Customer Support</span>
+  </div>
+  <header class="site-header">
+    <a class="brand" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+      <span class="brand-mark">C2M</span><span><strong>Cart<em>2Mart</em></strong><small>Your Trusted Online Store</small></span>
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-label="Open menu">☰</button>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="{{ routes.root_url }}">Home</a>
+      <a href="{{ routes.all_products_collection_url }}">Shop</a>
+      {% if section.settings.menu != blank %}
+        {% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title }}</a>{% endfor %}
+      {% else %}
+        <a href="/collections/all">Categories</a><a href="/pages/about-us">About Us</a><a href="/pages/contact">Contact</a>
+      {% endif %}
+    </nav>
+    <form class="search-form" action="{{ routes.search_url }}" method="get" role="search">
+      <input type="search" name="q" placeholder="Search for products..." aria-label="Search products">
+      <button type="submit" aria-label="Search">⌕</button>
+    </form>
+    <button class="theme-toggle" type="button" aria-label="Switch to light mode" title="Toggle dark/light mode"><span class="theme-toggle-icon">☼</span><span class="theme-toggle-label">Light</span></button>
+    <a class="header-icon" href="{{ routes.account_url }}" aria-label="Account">♙</a>
+    <a class="header-icon cart-link" href="{{ routes.cart_url }}" aria-label="Cart">🛒<sup>{{ cart.item_count }}</sup></a>
+  </header>
+  <main id="MainContent">
+    {{ content_for_layout }}
+  </main>
+  <footer class="site-footer">
+    <div class="footer-brand"><span class="brand-mark">C2M</span><div><strong>Cart<em>2Mart</em></strong><p>Best Products · Better Price · Trusted Always</p></div></div>
+    <div class="footer-links"><a href="/policies/refund-policy">Returns</a><a href="/policies/shipping-policy">Shipping</a><a href="/policies/privacy-policy">Privacy</a><a href="/pages/contact">Contact</a></div>
+    <small>© {{ 'now' | date: '%Y' }} {{ shop.name | escape }}. All rights reserved.</small>
+  </footer>
+</body>
+</html>
