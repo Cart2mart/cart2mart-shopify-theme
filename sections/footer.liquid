@@ -1,0 +1,72 @@
+<footer class="site-footer">
+  <div class="footer-brand">
+    <span class="brand-mark">C2M</span>
+    <div>
+      <strong>{{ section.settings.footer_title }}</strong>
+      <p>{{ section.settings.footer_subtitle }}</p>
+    </div>
+  </div>
+  <div class="footer-links">
+    {% for block in section.blocks %}
+      <a href="{{ block.settings.url }}">{{ block.settings.title }}</a>
+    {% endfor %}
+  </div>
+  <small>{{ section.settings.copyright_text }}</small>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "footer_title",
+      "label": "Footer Title",
+      "default": "Cart<em>2Mart</em>"
+    },
+    {
+      "type": "text",
+      "id": "footer_subtitle",
+      "label": "Footer Subtitle",
+      "default": "Best Products · Better Price · Trusted Always"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "© {{ 'now' | date: '%Y' }} Cart2Mart. All rights reserved."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Link Text",
+          "default": "Link"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL",
+          "default": "/"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer",
+      "blocks": [
+        {"type": "link", "settings": {"title": "Returns", "url": "/policies/refund-policy"}},
+        {"type": "link", "settings": {"title": "Shipping", "url": "/policies/shipping-policy"}},
+        {"type": "link", "settings": {"title": "Privacy", "url": "/policies/privacy-policy"}},
+        {"type": "link", "settings": {"title": "Contact", "url": "/pages/contact"}}
+      ]
+    }
+  ]
+}
+{% endschema %}
